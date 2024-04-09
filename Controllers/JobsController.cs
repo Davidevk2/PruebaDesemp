@@ -11,12 +11,12 @@ namespace PruebaDesemp.Controllers
     {
         //Inyeccion de dependencias para la conexion con la db
         public  readonly OfferContext _context;
-        //private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IWebHostEnvironment _hostEnvironment;
         //Constructor que inicializa la conexion
-        public JobsController(OfferContext context )
+        public JobsController(OfferContext context, IWebHostEnvironment hostEnvironment )
         {
             _context = context;
-            //_hostEnvironment = hostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<IActionResult> Index(string? search)
@@ -39,19 +39,21 @@ namespace PruebaDesemp.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Insert(Job job){
+        public async Task<IActionResult> Insert(Job job, IFormFile file){
 
          
 
-               /*  var route = Path.Combine(_hostEnvironment.WebRootPath, "files", file.FileName);
-                using(var stream = new FileStream(route,FileMode.Create)){
-                    await file.CopyToAsync(stream);
-                } */
+            var route = Path.Combine(_hostEnvironment.WebRootPath, "images", file.FileName);
+            using(var stream = new FileStream(route,FileMode.Create)){
+                await file.CopyToAsync(stream);
+            }
 
-                //job.LogoCompany = "/files/"+file.FileName;
-                _context.Jobs.Add(job);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+            
+
+            job.LogoCompany = "/images/"+file.FileName;
+            _context.Jobs.Add(job);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
 
             
         }
