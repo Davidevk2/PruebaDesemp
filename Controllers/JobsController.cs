@@ -11,12 +11,12 @@ namespace PruebaDesemp.Controllers
     {
         //Inyeccion de dependencias para la conexion con la db
         public  readonly OfferContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
+        //private readonly IWebHostEnvironment _hostEnvironment;
         //Constructor que inicializa la conexion
-        public JobsController(OfferContext context, IWebHostEnvironment hostEnvironment )
+        public JobsController(OfferContext context )
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
+            //_hostEnvironment = hostEnvironment;
         }
 
         public async Task<IActionResult> Index()
@@ -32,25 +32,42 @@ namespace PruebaDesemp.Controllers
         public IActionResult Create(){
             return View();
         }
-
+        
         [HttpPost]
-        public async Task<IActionResult> InsertJob(Job job, IFormFile file){
+        public async Task<IActionResult> Insert(Job job){
 
-            if(ModelState.IsValid){
+         
 
-                var route = Path.Combine(_hostEnvironment.WebRootPath, "files", file.FileName);
+               /*  var route = Path.Combine(_hostEnvironment.WebRootPath, "files", file.FileName);
                 using(var stream = new FileStream(route,FileMode.Create)){
                     await file.CopyToAsync(stream);
-                }
+                } */
 
-                job.LogoCompany = "/files/"+file.FileName;
+                //job.LogoCompany = "/files/"+file.FileName;
                 _context.Jobs.Add(job);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
 
-            }else{
-                return View(job);
-            }
+            
+        }
+
+
+        //View to edit 
+        public async Task<IActionResult> Edit( int? id){
+            return View( await _context.Jobs.FirstOrDefaultAsync(j => j.Id == id));
+        }
+
+        public async Task<IActionResult> Update(Job job, IFormFile file){
+
+           
+            job.LogoCompany = file.FileName;
+            _context.Jobs.Update(job);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+           
+
+            
         }
 
 

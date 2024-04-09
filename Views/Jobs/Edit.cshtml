@@ -1,11 +1,11 @@
 @{
-    ViewData["Title"] ="Create";
+    ViewData["Title"] ="Edit";
 }
-@model Job
+
 
 <div class="container mt-5">
     <div class="row">
-        <h1 class="text-center">Create a new Offer</h1>
+        <h1 class="text-center">Edit  job offer  / @Model.OfferTitle</h1>
 
     </div>
     <div class="row">
@@ -25,20 +25,20 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="text-center">Info about the company</h2>
-                    <form asp-action="Insert" method="post">
+                    <form asp-action="Update" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="All"></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="NameCompany"></label>
-                                    <input asp-for="NameCompany" class="form-control">
+                                    <label for="" >Name Company:</label>
+                                    <input type="text" name="NameCompany" value="@Model.NameCompany"  class="form-control">
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="LogoCompany"></label>
-                                    <input asp-for="LogoCompany"   class="form-control">
+                                    <label or="LogoCompany">Logo Company:</label>
+                                    <input  name="file" type="file" value="@Model.LogoCompany" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -47,45 +47,45 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="OfferTitle"></label>
-                                    <input asp-for="OfferTitle" class="form-control">
+                                    <label for="OfferTitle">Offer Title</label>
+                                    <input type="text" name="OfferTitle" value="@Model.OfferTitle" class="form-control">
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Country"></label>
-                                    <input asp-for="Country" class="form-control">
+                                    <label for="Country">Country:</label>
+                                    <input type="text" name="country" value="@Model.Country" class="form-control">
                                 </div>
                             </div>
                         </div>
                           <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Salary"></label>
-                                    <input asp-for="Salary" class="form-control">
+                                    <label for="Salary">Salary:</label>
+                                    <input type="number" name="Salary" value="@Model.Salary" class="form-control">
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Positions"></label>
-                                    <input asp-for="Positions" class="form-control">
+                                    <label for="Positions">Position:</label>
+                                    <input type="number" name="Positions" value="@Model.Positions"  class="form-control">
                                 </div>
                             </div>
                         </div>
                           <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Languages"></label>
-                                    <input asp-for="Languages" class="form-control">
+                                    <label for="Languages">Languagues:</label>
+                                    <input type="text" name="Languages" value="@Model.Languages"  class="form-control">
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Status"></label>
-                                    <select asp-for=" Status" class="form-select">
+                                    <label for="Status">Status:</label>
+                                    <select name="Status" class="form-select">
                                         <option value="avilable">Select the option</option>
                                         <option value="avilable">Avilable</option>
                                         <option value="disable">Disable</option>
@@ -95,15 +95,15 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label asp-for="Description"></label>
-                                <textarea asp-for="Description" cols="30" rows="4" class="form-control"></textarea>
+                                <label for="Description">Description:</label>
+                                <textarea name="Description" value="@Model.Description" cols="30" rows="4" class="form-control" ></textarea>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <br>
-                                <button type="submit" class="btn btn-success col-md-12">Create Job Offer</button>
+                                <button type="submit" class="btn btn-primary col-md-12">Edit job offer</button>
                             </div>
                         </div>
 
