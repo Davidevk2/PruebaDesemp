@@ -30,7 +30,7 @@ namespace PruebaDesemp.Models
         [Required]
         public string? About {get; set;}
         [Required]
-        public string? AcademyTitle {get; set;}
+        public string? AcademiTitle {get; set;}
          [Required]
         public string? Languages {get; set;}
          [Required]

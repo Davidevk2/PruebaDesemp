@@ -2,4 +2,67 @@
     ViewData["Title"] = "Employees";
 }
 
-<h1>Employes</h1>
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">List of Employees</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <aside>
+                <ul class="text-center">
+                    <li>
+                        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Register a new Employ</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Employees" asp-action="Index" class="btn btn-primary">List of Employees</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form asp-action="Index" method="get" class="d-flex">
+                                <input type="text" name="search" value="" id="" class="form-control" placeholder="Search..">
+                                <button class="btn btn-outline-primary">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Last Names</th>
+                                <th>Email</th>
+                                <th>About</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int rowCount = 1;
+                            }
+                            @foreach(var employ in Model){
+                                <tr>
+                                    <td>@rowCount</td>
+                                    <td>@employ.Names</td>
+                                    <td>@employ.LastNames</td>
+                                    <td>@employ.Email</td>
+                                    <td>@employ.About</td>    
+                                    <td><a asp-controller="Employees" asp-action="Details" asp-route-id="@employ.Id"  class="btn btn-sm btn-primary">Details</a>
+                                    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employ.Id"  class="btn btn-sm btn-warning">Edit</a>
+                                    <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employ.Id"  class="btn btn-sm btn-danger">Delte</a></td>    
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
