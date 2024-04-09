@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"]="Details";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Detaisl job Offer / @Model.OfferTitle</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <aside>
+                <ul class="text-center">
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Create" class="btn btn-success">Create a Job Offer</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary">List of Offers</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    
+                <h2 class="card-title">@Model.OfferTitle</h2>
+                <p class="card-text">Salary: @Model.NameCompany</p>
+                <p class="card-text">Salary: @Model.Salary</p>
+                <p class="card-text">Positions: @Model.Positions</p>
+                <p class="card-text">Country: @Model.Country</p>
+                <p class="card-text">Languages: @Model.Languages</p>
+
+                <h4>Description:</h4>
+                <p>@Model.Description</p>
+
+
+                <a asp-controller="Jobs" asp-action="Index" class="btn btn-dark">&leftarrow; Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

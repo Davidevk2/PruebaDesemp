@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">List of Job Offers</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <aside>
+                <ul class="text-center">
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Create" class="btn btn-success">Create a Job Offer</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary">List of Offers</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="" class="d-flex">
+                                <input type="text" name="Search" value="" id="" class="form-control" placeholder="Search..">
+                                <button class="btn btn-outline-primary">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Company Name</th>
+                                <th>Offer</th>
+                                <th>Description</th>
+                                <th>Salary</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int rowCount = 1;
+                            }
+                            @foreach(var job in Model){
+                                <tr>
+                                    <td>@rowCount</td>
+                                    <td>@job.NameCompany</td>
+                                    <td>@job.OfferTitle</td>
+                                    <td>@job.Description</td>
+                                    <td>@job.Salary</td>    
+                                    <td><a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.Id"  class="btn btn-sm btn-primary">Details</a>
+                                    <a asp-controller="Jobs" asp-action="Edit" asp-route-id="@job.Id"  class="btn btn-sm btn-warning">Edit</a>
+                                    <a asp-controller="Jobs" asp-action="Delete" asp-route-id="@job.Id"  class="btn btn-sm btn-danger">Delte</a></td>    
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

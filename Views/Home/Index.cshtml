@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bolsa de Empleo</h1>
+    <div class="">
+
+        <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary">View Job Offers</a>
+        <a asp-controller="Jobs" asp-action="Create" class="btn btn-primary">Create a Job Offer</a>
+        <a asp-controller="Empployees" asp-action="Index" class="btn btn-success">List Employees</a>
+        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Register a new Employ</a>
+    </div>
+</div>

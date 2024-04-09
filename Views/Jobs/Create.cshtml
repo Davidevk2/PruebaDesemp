@@ -1,0 +1,115 @@
+@{
+    ViewData["Tittle"] ="Create";
+}
+@model Job
+
+<div class="container mt-5">
+    <div class="row">
+        <h1 class="text-center">Create a new Offer</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <aside>
+                <ul class="text-center">
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Create" class="btn btn-success">Create a Job Offer</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Jobs" asp-action="Index" class="btn btn-primary">List of Offers</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">Info about the company</h2>
+                    <form asp-controller="Jobs" asp-action="InsertJob" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="All"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NameCompany"></label>
+                                    <input asp-for="NameCompany" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="LogoCompany"></label>
+                                    <input asp-for="LogoCompany" name="file" type="file" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h2 class="text-center">Info about the offer</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="OfferTitle"></label>
+                                    <input asp-for="OfferTitle" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Country"></label>
+                                    <input asp-for="Country" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Salary"></label>
+                                    <input asp-for="Salary" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Positions"></label>
+                                    <input asp-for="Positions" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Languages"></label>
+                                    <input asp-for="Languages" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status"></label>
+                                    <select asp-for=" Status" class="form-select">
+                                        <option value="avilable">Select the option</option>
+                                        <option value="avilable">Avilable</option>
+                                        <option value="disable">Disable</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label asp-for="Description"></label>
+                                <textarea asp-for="Description" cols="30" rows="4" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br>
+                                <button class="btn btn-success col-md-12">Create Job Offer</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
