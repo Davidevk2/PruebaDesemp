@@ -19,9 +19,14 @@ namespace PruebaDesemp.Controllers
             //_hostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search)
         {
-            return View(await _context.Jobs.ToListAsync());
+            var job = from  jobs in _context.Jobs select jobs;
+            if(!string.IsNullOrEmpty(search)){
+                job = job.Where(j => j.NameCompany.Contains(search) || j.OfferTitle.Contains(search)  || j.Description.Contains(search) || j.Salary.ToString().Contains(search));
+
+            }
+            return View(await job.ToListAsync());
         }
 
         
@@ -65,9 +70,17 @@ namespace PruebaDesemp.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
 
-           
+  
+        }
 
-            
+        public async Task<IActionResult> Delete(int? id){
+
+            var job = await _context.Jobs.FindAsync(id);
+
+            _context.Jobs.Remove(job);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
         }
 
 
