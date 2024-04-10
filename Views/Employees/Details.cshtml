@@ -1,0 +1,81 @@
+@{
+    ViewData["Title"] = "Employ Details";
+}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <h1 class="text-center">Employ Details / @Model.Names @Model.LastNames</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <aside>
+                <ul class="text-center">
+                    <li>
+                        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Register a new
+                            Employ</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Employees" asp-action="Index" class="btn btn-primary">List of Employees</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+
+                        <h2 class="card-title">@Model.Names + @Model.LastNames</h2>
+                        <p class="card-text">Salary: @Model.Email</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Phone: @Model.Phone</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Address: @Model.Address</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>BirthDate: @Model.BirthDate</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Gender: @Model.Gender</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Civil Status: @Model.CivilStatus</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Salary: @Model.Salary</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Academic Title: @Model.AcademiTitle</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Languages: @Model.Languages</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Area: @Model.Area</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-m-12">
+                                <label for="">About:</label>
+                                <p class="card-text"> @Model.About</p>
+                            </div>
+                        </div>
+
+                        <a href="" download="" class="btn btn-primary">Download &downarrow;</a>
+                    </div>
+
+                    <a asp-controller="Employees" asp-action="Index" class="btn btn-dark">&leftarrow; Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

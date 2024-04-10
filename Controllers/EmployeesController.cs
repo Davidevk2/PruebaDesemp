@@ -30,13 +30,15 @@ namespace PruebaDesemp.Controllers
 
         public async Task<IActionResult> Insert(Employ employ){
 
-            
             _context.Employees.Add(employ);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");   
 
-            
+        }
 
+        public async Task<IActionResult> Details(int? id){
+
+            return View(await _context.Employees.FirstOrDefaultAsync(e => e.Id == id));
         }
 
         
