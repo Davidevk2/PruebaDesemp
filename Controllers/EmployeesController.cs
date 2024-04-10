@@ -90,6 +90,12 @@ namespace PruebaDesemp.Controllers
 
 
         public async Task<IActionResult> Delete(int? id){
+
+           /*  var picture = await _context.Employees.FindAsync(id);
+
+            if(picture != null){
+            
+            } */
             
             var employ = await _context.Employees.FindAsync(id);
             _context.Employees.Remove(employ);
