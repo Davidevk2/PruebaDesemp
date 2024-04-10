@@ -58,6 +58,26 @@ namespace PruebaDesemp.Controllers
 
         }
 
+        public async Task<IActionResult> Edit(int? id){
+
+            return View(await _context.Employees.FirstOrDefaultAsync(c => c.Id == id));
+        }
+
+        public async Task<IActionResult> Update(Employ employ, IFormFile profile, IFormFile cv){
+
+            employ.ProfilePicture = profile.FileName;
+            employ.Cv = cv.FileName;
+
+            try{
+                _context.Employees.Update(employ);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+            }catch(DbUpdateException){
+                return RedirectToAction("Edit", employ);
+            }
+        }
+
         public async Task<IActionResult> Details(int? id){
 
             return View(await _context.Employees.FirstOrDefaultAsync(e => e.Id == id));
