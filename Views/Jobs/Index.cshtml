@@ -55,7 +55,7 @@
                                     <td>@job.Salary</td>    
                                     <td><a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.Id"  class="btn btn-sm btn-primary">Details</a>
                                     <a asp-controller="Jobs" asp-action="Edit" asp-route-id="@job.Id"  class="btn btn-sm btn-warning">Edit</a>
-                                    <a asp-controller="Jobs" asp-action="Delete" asp-route-id="@job.Id"  class="btn btn-sm btn-danger">Delte</a></td>    
+                                    <a asp-controller="Jobs" asp-action="Confirmation" asp-route-id="@job.Id"  class="btn btn-sm btn-danger">Delete</a></td>    
                                 </tr>
                                 rowCount++;
                             }

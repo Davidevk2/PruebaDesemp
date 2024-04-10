@@ -75,6 +75,11 @@ namespace PruebaDesemp.Controllers
   
         }
 
+        public async Task<IActionResult> Confirmation(int? id){
+
+            return View(await _context.Jobs.FirstOrDefaultAsync(e => e.Id == id));
+        }
+
         public async Task<IActionResult> Delete(int? id){
 
             var job = await _context.Jobs.FindAsync(id);
