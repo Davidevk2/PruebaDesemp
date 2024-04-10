@@ -76,6 +76,15 @@ img{
 .card{
   min-height: 550px;
 }
+
+.small-card{
+  width: 60%;
+  margin: auto;
+  padding-top: 20px;
+  background-color: white;
+  border-radius: .25rem;
+  border: 1px solid rgba(0,0,0,.125);
+}
 aside{
   padding-top: 20px;
   background-color: white;
