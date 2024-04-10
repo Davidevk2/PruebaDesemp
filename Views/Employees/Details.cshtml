@@ -26,8 +26,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-
-                        <h2 class="card-title">@Model.Names + @Model.LastNames</h2>
+                        <img src="@Model.ProfilePicture" alt="@Model.ProfilePicture" class="img-profile">
+                        <h2 class="card-title">@Model.Names @Model.LastNames</h2>
                         <p class="card-text">Salary: @Model.Email</p>
                         <hr>
                         <div class="row">
@@ -71,7 +71,7 @@
                         </div>
                         
 
-                        <a href="" download="" class="btn btn-primary">Download &downarrow;</a>
+                        <a href="@Model.Cv" download="@Model.Cv" class="btn btn-primary">Download &downarrow;</a>
                     </div>
 
                     <a asp-controller="Employees" asp-action="Index" class="btn btn-dark">&leftarrow; Back</a>

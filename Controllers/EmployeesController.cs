@@ -35,7 +35,22 @@ namespace PruebaDesemp.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Insert(Employ employ){
+        public async Task<IActionResult> Insert(Employ employ, IFormFile profile, IFormFile cv){
+
+            var routeProfile = Path.Combine(_hostEnvironment.WebRootPath, "images", profile.FileName);
+            var routeCv = Path.Combine(_hostEnvironment.WebRootPath, "documents", cv.FileName);
+             //guardar la imagen de perfil 
+            using(var stream = new FileStream(routeProfile,FileMode.Create)){
+                await profile.CopyToAsync(stream);
+            }
+
+            //guardar el documento
+            using(var stream = new FileStream(routeCv,FileMode.Create)){
+                await profile.CopyToAsync(stream);
+            }
+
+            employ.ProfilePicture = "/images/"+ profile.FileName;
+            employ.Cv = "/documents/"+ cv.FileName;
 
             _context.Employees.Add(employ);
             await _context.SaveChangesAsync();
