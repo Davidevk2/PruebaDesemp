@@ -12,15 +12,22 @@ namespace PruebaDesemp.Controllers
     {
         //indeyeccion de dependencias para la db
         public readonly OfferContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
         //constructor que inicializa la db
-        public EmployeesController(OfferContext context)
+        public EmployeesController(OfferContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search)
         {
-            return View(await _context.Employees.ToListAsync());
+            var employ = from employs in _context.Employees select employs;
+            if(!string.IsNullOrEmpty(search)){
+                employ = employ.Where(e => e.Names.Contains(search) || e.LastNames.Contains(search) || e.Email.Contains(search) || e.About.Contains(search));
+            }
+
+            return View(await employ.ToListAsync());
         }
 
         public IActionResult Create(){
